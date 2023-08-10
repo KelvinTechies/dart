@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practicing/Pages/home_page.dart';
+import 'package:practicing/Pages/main_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -8,7 +9,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.purpleAccent,
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return HomePage();
+                            return MainPage();
                           },
                         ),
                       );

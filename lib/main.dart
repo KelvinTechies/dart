@@ -11,7 +11,11 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Rubik'),
+      theme: ThemeData(
+        fontFamily: 'Rubik',
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 107, 112, 119),
+      ),
       home: LoginPage(),
     );
   }

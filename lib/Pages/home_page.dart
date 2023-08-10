@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:practicing/component/post_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,9 +8,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
+      backgroundColor: const Color.fromARGB(255, 107, 112, 119),
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: Text(
           '5MinsFlutter',
           style: TextStyle(color: Colors.black),
@@ -21,21 +22,17 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Row(children: [
-            Image.asset(
-              'assets/Temp/deepak-mahajan-8ig-SzHpqDw-unsplash-removebg-preview.png',
-              width: 40,
-              height: 40,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Text('Giovani Hernandez')
-          ])
-        ],
+      body: ListView(
+        children: MockUsers(),
       ),
     );
   }
+}
+
+List<Widget> MockUsers() {
+  List<Widget> users = [];
+  for (var i = 0; i < 10; i++) {
+    users.add(PostItem());
+  }
+  return users;
 }
