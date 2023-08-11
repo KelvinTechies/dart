@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:practicing/Pages/edit_profile_page.dart';
+import 'package:practicing/Pages/user_avartar.dart';
+
+enum ProfileMenu { edit, logout }
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -9,13 +13,29 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Profile"),
         actions: [
-          PopupMenuButton(itemBuilder: (context) {
+          PopupMenuButton<ProfileMenu>(onSelected: (val) {
+            switch (val) {
+              case ProfileMenu.edit:
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return EditProfile();
+                }));
+                break;
+              case ProfileMenu.logout:
+                print("Logout Clicked");
+                break;
+              default:
+                print("Nothing Clicked");
+            }
+          }, itemBuilder: (context) {
             return [
               PopupMenuItem(
                 child: Text("Edit"),
+                value: ProfileMenu.edit,
               ),
               PopupMenuItem(
-                child: Text("Add Post"),
+                child: Text("Log Out"),
+                value: ProfileMenu.logout,
               ),
             ];
           }),
@@ -23,11 +43,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.asset(
-            'assets/Temp/deepak-mahajan-8ig-SzHpqDw-unsplash-removebg-preview.png',
-            width: 90,
-            height: 90,
-          ),
+          UserAvatarImg(size: 90),
           SizedBox(
             height: 12,
           ),
